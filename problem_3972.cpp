@@ -14,9 +14,14 @@ Return an integer denoting F(n) modulo 10^9 + 7.
 */
 class Solution {
 public:
+    /*
+    It folds the value at compile time — kMod doesn't exist as a memory location in the generated code.
+    The value 1000000007 is embedded as an immediate in the instruction, or hoisted into a register
+    once before the loop. Zero memory traffic for kMod.
+    */
+    static constexpr long kMod = (1e9) + 7; 
     int sumOfBlocks(int n)
     {    
-        const long kMod = (1e9) + 7; 
         long answer = 0;
         int number = 0;
         for (int i=0; i<n; i++)
